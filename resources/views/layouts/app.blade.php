@@ -4,11 +4,12 @@
         <meta charset="utf-8">
         <title>Microposts</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>
-    
+
     <body>
-         {{-- ナビゲーションバー --}}
+
+        {{-- ナビゲーションバー --}}
         @include('commons.navbar')
 
         <div class="container">
@@ -24,3 +25,4 @@
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     </body>
 </html>
+ 
