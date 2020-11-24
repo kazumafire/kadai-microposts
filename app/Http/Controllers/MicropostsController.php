@@ -6,36 +6,37 @@ use Illuminate\Http\Request;
 
 class MicropostsController extends Controller
 {
-    public function index()
+   public function index()
     {
         $data = [];
-        if (\Auth::check()) {//認証済みの場合
-            //認証済みのユーザーを取得
+        if (\Auth::check()) { // 認証済みの場合
+            // 認証済みユーザを取得
             $user = \Auth::user();
-            //ユーザーの投稿の一覧を作成日時の降順で取得
+            // ユーザの投稿の一覧を作成日時の降順で取得
             $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
-            
+
             $data = [
                 'user' => $user,
                 'microposts' => $microposts,
-                ];
+            ];
         }
-        //welcomeビューでそれらを表示
+
+        // Welcomeビューでそれらを表示
         return view('welcome', $data);
     }
-    
-    public function store(Repuest $repuest){
-        //バリデーション
+    public function store(Request $request)
+    {
+        // バリデーション
         $request->validate([
             'content' => 'required|max:255',
-            
         ]);
-        //認証済みユーザー（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
+
+        // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
         $request->user()->microposts()->create([
             'content' => $request->content,
         ]);
-        
-        //前のURLへリダイレクトさせる
+
+        // 前のURLへリダイレクトさせる
         return back();
     }
     
