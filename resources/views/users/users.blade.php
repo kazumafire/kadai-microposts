@@ -17,5 +17,5 @@
         @endforeach
     </ul>
     {{-- ページネーションのリンク --}}
-    {{ $users->links()
+    {{ $users->links() }}
 @endif
