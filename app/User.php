@@ -134,7 +134,7 @@ class User extends Authenticatable
     public function unfavorite($micropostId){
         //すでにお気に入りしているかの確認
         $exist = $this->is_favorite($micropostId);
-        // $its_me = \Auth::id() == $micropost->user_id;
+        
         $its_me = $this->id == $micropostId;
        if($exist && !$its_me) {
            //すでにお気に入りしていれば取り消す
